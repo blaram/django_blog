@@ -1,13 +1,25 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from blogs.models import Blog
+from django.shortcuts import get_object_or_404, redirect, render
+from blogs.models import Blog, Category
 
 # Create your views here.
 
 
 def posts_by_category(request, category_id):
     posts = Blog.objects.filter(status='Published', category=category_id)
+    # category = Category.objects.get(pk=category_id)
+
+    # category = get_object_or_404(Category, pk=category_id)
+
+    try:
+        category = Category.objects.get(pk=category_id)
+    except:
+        return redirect('home')
+
+    categories = Category.objects.all()
     context = {
-        'posts': posts
+        'posts': posts,
+        'category': category,
+        'categories': categories
     }
     return render(request, 'posts_by_category.html', context)
