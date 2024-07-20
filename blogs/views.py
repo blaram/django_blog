@@ -16,10 +16,8 @@ def posts_by_category(request, category_id):
     except:
         return redirect('home')
 
-    categories = Category.objects.all()
     context = {
         'posts': posts,
         'category': category,
-        'categories': categories
     }
     return render(request, 'posts_by_category.html', context)
