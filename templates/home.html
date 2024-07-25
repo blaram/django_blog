@@ -39,7 +39,7 @@
                                     <div class="post-thumb" style="background-image: url({{ post.featured_image.url }})"></div>
                                     <div class="entry-content-2 pl-50">
                                         <h3 class="post-title mb-20">
-                                            <a href="blog-post-right.html">{{ post.title }}</a>
+                                            <a href="{% url 'blogs' post.slug %}">{{ post.title }}</a>
                                         </h3>
                                         <p class="post-exerpt mb-40">{{ post.short_description }}</p>
                                         <div class="entry-meta meta-1 font-xs color-grey mt-10 pb-10">
@@ -47,7 +47,7 @@
                                                 <span class="post-on">{{ post.created_at }}</span>
                                                 <span class="hit-count has-dot">{{ post.author }}</span>
                                             </div>
-                                            <a href="blog-post-right.html" class="text-brand font-heading font-weight-bold">Ver más <i class="fi-rs-arrow-right"></i></a>
+                                            <a href="{% url 'blogs' post.slug %}" class="text-brand font-heading font-weight-bold">Ver más <i class="fi-rs-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </article>
